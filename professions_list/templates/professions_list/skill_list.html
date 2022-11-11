@@ -1,0 +1,20 @@
+{% extends 'professions_list/index.html' %}
+
+<title>Список профессий</title>
+
+{% block content %}
+    <div class="d-flex align-content-start flex-wrap">
+        {% for skill in object_list %}
+
+            <a href=../professions_list?skill_id={{ skill.id }}>
+                <div class="d-flex w-100 justify-content-between pl-2 pr-2 pb-2 pt-2">
+                    <h2><span
+                            class="badge badge-pill badge-{{ skill.color }} border border-secondary">{{ skill.name }}</span>
+                    </h2>
+                </div>
+            </a>
+
+        {% endfor %}
+    </div>
+
+{% endblock content %}

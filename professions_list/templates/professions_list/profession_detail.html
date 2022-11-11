@@ -1,0 +1,22 @@
+{% extends 'professions_list/index.html' %}
+<title>{{ profession.title }}</title>
+
+{% block content %}
+    <div class="card">
+        <div style="position:relative" class="card-body">
+            <h5 class="card-title pr-5">{{ profession.title }}</h5>
+            <h6 style="position:absolute; top: 0; right: 0;"
+                class="text-secondary pt-4 pr-4">{{ profession.company }}</h6>
+            <p class="card-text">{{ profession.description|linebreaksbr }}</p>
+        </div>
+        <div class="pl-4 pr-4">
+            {% for skill in profession.skills.all %}
+                <span class="badge badge-pill badge-{{ skill.color }}">{{ skill.name }}</span>
+            {% endfor %}
+        </div>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+{% endblock content %}

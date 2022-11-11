@@ -1,0 +1,41 @@
+{% extends 'professions_list/index.html' %}
+
+<title>Список профессий</title>
+
+{% block content %}
+    <div class="list-group ">
+        {% for profession in object_list %}
+
+            <a href="../profession/{{ profession.id }}"
+               class="list-group-item list-group-item-action flex-column align-items-start rounded mb-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ profession.title }}</h5>
+                    <h6 class="text-secondary">{{ profession.company }}</h6>
+                </div>
+                <p class="mb-1">{{ profession.description|truncatechars:200 }}...</p>
+            </a>
+
+        {% endfor %}
+    </div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+                <a class="page-link"
+                   href="?page={% if page_obj.has_previous %}{{ page_obj.previous_page_number }}{% endif %}"
+                   tabindex="-1">Previous </a>
+            </li>
+            {% for page in paginator.page_range %}
+                <li class="page-item {% if page_obj.number == page %} active {% endif %}">
+                    <a class="page-link"
+                       href="{% if not skill_id %}?page={% else %}?skill_id={{ skill_id }}&page={% endif %}{{ page }}">{{ page }}<span
+                            class="sr-only">()</span></a>
+                </li>
+            {% endfor %}
+
+            <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
+                <a class="page-link"
+                   href="?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{% endif %}">Next</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock content %}

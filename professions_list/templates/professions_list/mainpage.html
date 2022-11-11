@@ -1,0 +1,37 @@
+{% extends 'professions_list/index.html' %}
+
+<title>Список профессий</title>
+
+{% block content %}
+
+    {% load static %}
+    <div class="text-center mb-4">
+        <img id="fish" src="{% static 'professions_list/img/404_abg.png' %}" class="rounded" alt="...">
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <button id="spin_button" type="submit" class="btn btn-{{ color_list|random }} btn-lg btn-block mb-4"
+                style="border:solid grey 5px">{{ server_info.last_updated }}
+        </button>
+    </form>
+    <div class="text-center mb-5">
+        <img src="{% static 'professions_list/img/vulk.gif' %}" class="rounded" alt="...">
+    </div>
+    <style>
+        @keyframes rotation {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(359deg);
+            }
+        }
+
+    </style>
+    <script>
+        document.getElementById("spin_button").onclick = function () {
+            console.log("btw")
+            document.getElementById("fish").style.cssText = "animation:  rotation 2s infinite linear;"
+        }
+    </script>
+{% endblock content %}

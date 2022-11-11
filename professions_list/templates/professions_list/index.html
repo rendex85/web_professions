@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'professions_list/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'professions_list/css/styles.css' %}" type="text/css">
+
+</head>
+<body>
+
+<div class="d-flex flex-row" style="height: 100vh">
+    <!--Main Navigation-->
+    {% include "professions_list/navbar.html" %}
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pl-2 pr-2" style="padding-top: 58px; flex: 0 1 100%; overflow: auto;">
+        <div class="container pt-4">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
